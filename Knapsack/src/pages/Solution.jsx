@@ -133,7 +133,7 @@ const Solution = () => {
                                 onChange={(e) => setValeur(e.target.value)}
                             />
                             <button
-                                className="bg-blue-500 text-white rounded p-2 w-[20%] h-[10%] focus:outline-none focus:ring-0"
+                                className="bg-sky-800 text-white rounded p-2 w-[25%] h-[10%] focus:outline-none focus:ring-0"
                                 onClick={handleAjouterObjet}
                             >
                                 {currentIndex === -1 ? 'Ajouter l\'objet' : 'Modifier l\'objet'}
