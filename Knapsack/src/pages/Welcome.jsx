@@ -18,7 +18,7 @@ const Welcome = () => {
                     <button
                         className="bg-neutral-50 text-black text-lg px-4 py-2 rounded-full hover:bg-neutral-100 transition absolute mt-16 right-8"
                     >
-                        Essayer la solution &gt;&gt;
+                        Explorer la solution &gt;&gt;
                     </button>
                 </Link>
             </div>
