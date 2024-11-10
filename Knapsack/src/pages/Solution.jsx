@@ -56,16 +56,23 @@ const Solution = () => {
         }
     };
 
+    /*
+    garde la trace des gains maximal possibles pour chaque capacité intermédiaire, 
+    puis elle retrace les objets sélectionnés pour obtenir ce profit maximal
+     */
     const handleCalculerProfitMaximal = () => {
+        // ll nombre de lignes dans la matrice est le nombre des objets qu'on possède
         const n = objets.length;
         const dp = Array.from({ length: n + 1 }, () => Array(capacite + 1).fill(0));
 
-        // Remplir la table DP
+        // remplir la table DP o(n²)
         for (let i = 1; i <= n; i++) {
+            // get le poids et le gain de l'objet courant i
             const w = objets[i - 1].poids;
             const v = objets[i - 1].valeur;
 
             for (let sz = 1; sz <= capacite; sz++) {
+                // donc le gain maximale reste le meme qu'il était en parcourant l'objet précedent
                 dp[i][sz] = dp[i - 1][sz]; // Cas où on ne prend pas l’objet
 
                 // Cas où on prend l’objet
@@ -79,11 +86,15 @@ const Solution = () => {
         setResultat(dp[n][capacite]);
         setMatriceDP(dp);
 
-        // Trouver les objets sélectionnés
+        /**
+         * on fait du backtracking pour retrouver quels objets 
+         * ont été sélectionnés pour obtenir le profit maximal calculé dans la table
+         */
         const selected = [];
         let w = capacite;
         for (let i = n; i > 0 && w > 0; i--) {
             if (dp[i][w] !== dp[i - 1][w]) {
+                // donc l'objet a été sélectionné car il contribue dans le gain maximal
                 selected.push(objets[i - 1]);
                 w -= objets[i - 1].poids;
             }
