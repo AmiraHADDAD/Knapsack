@@ -104,9 +104,9 @@ const Solution = () => {
 
     return (
         <div className="home h-screen w-screen flex flex-row items-center justify-center">
-            <div className='w-[90%] h-[85%] bg-white bg-opacity-30 rounded-2xl'>
+            <div className='w-[90%] h-[90%] bg-white bg-opacity-30 rounded-2xl'>
                 <div className='flex flex-col py-10 px-6 items-start justify-start w-full'>
-                    <h1 className='text-gray-950 text-5xl font-bold mb-10'>
+                    <h1 className='text-gray-950 text-5xl font-bold mb-8'>
                         Solution proposée
                     </h1>
                     <div className='flex flex-row justify-start items-start w-full'>
@@ -195,15 +195,27 @@ const Solution = () => {
                     </button>
 
                     {resultat !== null && (
-                        <>
-                            <h2 className="mt-4 text-xl text-black">
-                                Le profit maximal réalisable est : {resultat}
-                            </h2>
-                            <p className="mt-2 text-blue-500 cursor-pointer" onClick={() => setShowPopup(true)}>
-                                Plus de détails
-                            </p>
-                        </>
-                    )}
+    <>
+        <h2 className="mt-4 text-xl text-black">
+            Le profit maximal réalisable est : {resultat}
+        </h2>
+        
+        {objetsSelectionnes.length > 0 && (
+            <h2 className="mt-2 text-xl text-black">
+                Les objets sélectionnés : {objetsSelectionnes.map(objet => objet.nom).join(', ')}
+            </h2>
+        )}
+        
+        <h2 className="mt-2 text-xl text-black">
+            La complexité de l'algorithme est : O(W × n) = O({capacite} × {objets.length}) = {capacite * objets.length}
+        </h2>
+
+        <p className="mt-2 text-blue-500 cursor-pointer" onClick={() => setShowPopup(true)}>
+            Plus de détails
+        </p>
+    </>
+)}
+
                 </div>
             </div>
             {showPopup && (
