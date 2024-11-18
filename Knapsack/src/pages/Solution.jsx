@@ -19,7 +19,7 @@ const Solution = () => {
 
     const handleAjouterObjet = () => {
         if (nom && poids && valeur) {
-            const newObjet = { nom, poids: parseInt(poids), valeur: parseInt(valeur) };
+            const newObjet = { nom, poids: parseInt(poids), valeur: parseInt(valeur) };  // parseInt convert a string to an integer
 
             if (currentIndex === -1) {
                 // Si aucun objet n'est sélectionné, ajoute un nouvel objet
